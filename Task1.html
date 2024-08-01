@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SC_SD_1</title>
+   
+</head>
+<body>
+    <h3>Converts temperatures between celsius,Fahrenheit and kelvin scales</h3><br>
+    <input type="radio" id="CelToKelvin" name="button">Celcius to kelvin<br>
+    <input type="radio" id="CelciusToF" name="button">Celsius to Fahrenheit<br>
+    <input type="radio" id="KelvinToCel" name="button">Kelvin to Celsius<br>
+    <input type="radio" id="KelvinToF" name="button">Kelvin to Fahrenheit<br>
+    <input type="radio" id="FToCelcius" name="button">Fahrenheit to Celsius<br>
+    <input type="radio" id="FToKelvin" name="button">Fahrenheit to Kelvin<br><br>
+   
+   
+   <input type="submit" value="submit" onclick="returnTemp()"><br><br>
+   <span id="ck"></span><br>
+
+
+   <input id="temperature"  type="hidden" name="name" >
+
+
+    <script>
+        function returnTemp(){
+
+            function celsiusToFahrenheit(celsius) {
+                   return (celsius * 9/5) + 32;
+                 }
+             
+             function fahrenheitToCelsius(fahrenheit) {
+                 return (fahrenheit - 32) * 5/9;
+             }
+             
+             function celsiusToKelvin(celsius) {
+                 return celsius + 273.15;
+             }
+             
+             function kelvinToCelsius(kelvin) {
+                 return kelvin - 273.15;
+             }
+             
+             function fahrenheitToKelvin(fahrenheit) {
+                 let celsius = fahrenheitToCelsius(fahrenheit);
+                 return celsiusToKelvin(celsius);
+             }
+             
+             function kelvinToFahrenheit(kelvin) {
+                 let celsius = kelvinToCelsius(kelvin);
+                 return celsiusToFahrenheit(celsius);
+             }
+             
+            var button=document.querySelector('input[name="button"]:checked');
+            if(button==CelToKelvin){
+                let celsius=parseFloat(prompt("Enter temperature in celcius"));
+                document.getElementById("ck").innerHTML=celsius + " Celsius is " + celsiusToKelvin(celsius) + " Kelvin";
+            }else if(button==CelciusToF)
+            {
+                let celsius=parseFloat(prompt("Enter temperature in celcius"));
+                document.getElementById("ck").innerHTML=celsius + " Celsius is " + celsiusToFahrenheit(celsius) + " Fahrenheit";
+            }else if(button==KelvinToCel)
+            {
+
+                let kelvin=parseFloat(prompt("Enter temperature in Kelvin"));
+                document.getElementById("ck").innerHTML=kelvin + " kelvin is " + kelvinToCelsius(kelvin) + " Celsius";
+
+            }else if(button==KelvinToF)
+            {
+                let kelvin=parseFloat(prompt("Enter temperature in kelvin"));
+                document.getElementById("ck").innerHTML=kelvin + " kelvin is " + kelvinToFahrenheit(kelvin) + " Fahrenheit";
+
+            }else if(button==FToCelcius)
+            {
+                let fahrenheit=parseFloat(prompt("Enter temperature in fahrenheit"));
+                document.getElementById("ck").innerHTML=fahrenheit + " fahrenheit is " + fahrenheitToCelsius(fahrenheit)  + " Celsius";
+
+            }else if(button==FToKelvin)
+            {
+                let fahrenheit=parseFloat(prompt("Enter temperature in fahrenheit"));
+                document.getElementById("ck").innerHTML=fahrenheit + " fahrenheit is " + fahrenheitToKelvin(fahrenheit) + " Kelvin";
+
+            }else
+            {
+                alert("Please select  choice !!!");
+            }
+            
+        }
+
+    </script>
+</body>
+</html>
